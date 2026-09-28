@@ -19,29 +19,24 @@ jobs:
           java-version: "17"
           cache: gradle
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-      - name: Install Android SDK
         run: |
-          yes | sdkmanager --licenses || true
+          export ANDROID_HOME="${ANDROID_SDK_ROOT}"
+          export PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${PATH}"
+          yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
       - name: Verify Project
         run: |
           echo "=== ROOT ==="
           pwd
           ls -la
-          echo "=== PROJECT ==="
+          echo "=== REQUIRED FILES ==="
           test -f settings.gradle
           test -f build.gradle
           test -f app/build.gradle
-          echo "=== APP ==="
-          find app -maxdepth 5 -type f | sort
-          echo "=== GRADLE ==="
-          if [ -f gradlew ]; then
-            chmod +x gradlew
-          else
-            echo "ERROR: gradlew tidak ditemukan"
-            exit 1
-          fi
+          test -f gradlew
+          chmod +x gradlew
+          echo "=== APP STRUCTURE ==="
+          find app -maxdepth 6 -type f | sort
       - name: Build APK
         run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
       - name: Upload APK
