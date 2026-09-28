@@ -1,0 +1,42 @@
+{
+  "game_version": "1.50.14",
+  "wave_mode": "unlimited",
+  "checkpoints": [
+    {
+      "wave": 1000,
+      "castle": 40,
+      "town_archer": 100
+    },
+    {
+      "wave": 2500,
+      "castle": 100,
+      "town_archer": 250
+    },
+    {
+      "wave": 5000,
+      "castle": 200,
+      "town_archer": 500
+    },
+    {
+      "wave": 7500,
+      "castle": 300,
+      "town_archer": 750
+    },
+    {
+      "wave": 10000,
+      "castle": 400,
+      "town_archer": 1000
+    }
+  ],
+  "post_10000_ratio": {
+    "castle": 0.03,
+    "town_archer": 0.16
+  },
+  "slot_limits": {
+    "heroes": 12,
+    "town": 3,
+    "castle_parts": 4,
+    "towers_normal": 4,
+    "towers_with_stone": 6
+  }
+}
