@@ -27,20 +27,22 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: "8.7"
+          gradle-version: "8.9"
       - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 8.7
+        run: gradle wrapper --gradle-version 8.9
       - name: Verify Project
         run: |
           echo "=== ROOT ==="
           pwd
           ls -la
-          echo "=== PROJECT ==="
+          echo "=== REQUIRED FILES ==="
           test -f settings.gradle
           test -f build.gradle
           test -f app/build.gradle
           test -f gradlew
           chmod +x gradlew
+          echo "=== GRADLE VERSION ==="
+          ./gradlew --version
           echo "=== APP STRUCTURE ==="
           find app -maxdepth 6 -type f | sort
       - name: Build APK
