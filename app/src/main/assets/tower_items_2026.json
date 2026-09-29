@@ -1,0 +1,12 @@
+{
+  "game_version": "1.50.14",
+  "tower_items_supported": true,
+  "note": "Tower item system is available in Grow Castle 1.50.14.",
+  "items": [
+    {
+      "name": "Tower Item Slot",
+      "description": "Planner placeholder for tower equipment.",
+      "supported": true
+    }
+  ]
+}
